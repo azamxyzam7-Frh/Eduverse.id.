@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eduverse-ID — ruang belajar interaktif dengan materi, fakta menarik, dan kuis acak.">
+  <title>Eduverse-ID | Ruang Belajar Interaktif</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand-mini" href="#beranda" aria-label="Eduverse-ID">eduverse-id</a>
+    <nav id="mainNav" class="nav">
+      <a href="#beranda">Beranda</a>
+      <a href="#materi">Materi</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#fakta">Fakta</a>
+    </nav>
+    <div class="top-actions">
+      <button id="themeBtn" class="icon-btn" aria-label="Ganti tema">☾</button>
+      <button id="menuBtn" class="menu-btn" aria-label="Buka menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="beranda" class="hero section">
+      <div class="hero-copy">
+        <span class="eyebrow">RUANG BELAJAR DIGITAL</span>
+        <h1>Belajar hal baru,<br><span>setiap hari.</span></h1>
+        <p>Materi ringkas dan lengkap, fakta menarik, serta quiz acak untuk membantu kamu memahami berbagai pelajaran dengan cara yang lebih menyenangkan.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#materi">Mulai belajar →</a>
+          <a class="btn ghost" href="#quiz">Coba quiz</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="planet"><span>✦</span></div>
+        <div class="floating-card card-a">Sains <b>+24</b></div>
+        <div class="floating-card card-b">Quiz <b>acak</b></div>
+        <div class="floating-card card-c">📚 Belajar</div>
+      </div>
+    </section>
+
+    <section class="stats section-small">
+      <div><strong id="materialCount">0</strong><span>topik materi</span></div>
+      <div><strong>6</strong><span>bidang pelajaran</span></div>
+      <div><strong id="quizCount">0</strong><span>soal quiz</span></div>
+      <div><strong id="learnedCount">0</strong><span>materi selesai</span></div>
+    </section>
+
+    <section id="materi" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">EKSPLORASI</span>
+          <h2>Pilih pelajaranmu</h2>
+        </div>
+        <p>Cari topik atau pilih kategori untuk menemukan materi yang ingin kamu pelajari.</p>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Cari materi, misalnya fotosintesis...">
+        </label>
+        <div id="categoryFilters" class="filters"></div>
+      </div>
+
+      <div id="materialGrid" class="material-grid"></div>
+      <div id="emptyState" class="empty-state hidden">
+        <div>⌕</div>
+        <h3>Materi belum ditemukan</h3>
+        <p>Coba kata kunci atau kategori lain.</p>
+      </div>
+    </section>
+
+    <section id="quiz" class="section quiz-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">QUIZ INTERAKTIF</span>
+          <h2>Uji pemahamanmu</h2>
+        </div>
+        <p>Soal dipilih secara acak berdasarkan pelajaran yang kamu pilih.</p>
+      </div>
+
+      <div class="quiz-panel">
+        <div id="quizSetup">
+          <div class="quiz-intro">
+            <div class="quiz-icon">?</div>
+            <div>
+              <h3>Quiz acak Eduverse-ID</h3>
+              <p>Pilih pelajaran dan jumlah soal. Setiap mulai quiz, urutan soal akan diacak.</p>
+            </div>
+          </div>
+          <div class="quiz-options">
+            <label>Pelajaran
+              <select id="quizSubject">
+                <option value="all">Semua pelajaran</option>
+              </select>
+            </label>
+            <label>Jumlah soal
+              <select id="quizLength">
+                <option value="5">5 soal</option>
+                <option value="10">10 soal</option>
+                <option value="15">15 soal</option>
+              </select>
+            </label>
+          </div>
+          <button id="startQuiz" class="btn primary">Mulai quiz →</button>
+        </div>
+
+        <div id="quizPlay" class="hidden">
+          <div class="quiz-top">
+            <span id="quizProgress">Soal 1 dari 5</span>
+            <span id="quizScore">Skor: 0</span>
+          </div>
+          <div class="progress-line"><span id="quizProgressBar"></span></div>
+          <div class="question-card">
+            <span id="questionSubject" class="pill">Sains</span>
+            <h3 id="questionText"></h3>
+            <div id="answerList" class="answer-list"></div>
+          </div>
+          <button id="nextQuestion" class="btn primary hidden">Soal berikutnya →</button>
+        </div>
+
+        <div id="quizResult" class="hidden result-box">
+          <div class="result-ring"><span id="resultScore">0</span><small>/ 100</small></div>
+          <h3 id="resultTitle">Quiz selesai!</h3>
+          <p id="resultMessage"></p>
+          <div class="result-actions">
+            <button id="retryQuiz" class="btn primary">Coba lagi</button>
+            <button id="newQuiz" class="btn ghost">Pilih pelajaran lain</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fakta" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">TAHU NGGAK?</span>
+          <h2>Fakta menarik</h2>
+        </div>
+        <p>Potongan pengetahuan singkat yang bisa membuka rasa penasaranmu.</p>
+      </div>
+      <div id="factGrid" class="fact-grid"></div>
+    </section>
+
+    <section class="section about">
+      <div class="about-card">
+        <span class="eyebrow">TENTANG EDUVERSE-ID</span>
+        <h2>Belajar tidak harus terasa rumit.</h2>
+        <p>Eduverse-ID dirancang sebagai ruang belajar sederhana untuk membaca materi, menguji pemahaman, dan menyimpan progres belajar langsung di browser.</p>
+        <div class="about-points">
+          <span>✓ Materi terstruktur</span>
+          <span>✓ Quiz acak</span>
+          <span>✓ Progres tersimpan</span>
+          <span>✓ Nyaman di HP</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> eduverse-id</span>
+    <span>Belajar • Jelajah • Pahami</span>
+  </footer>
+
+  <div id="materialModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <article class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Tutup">×</button>
+      <div id="modalContent"></div>
+    </article>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
