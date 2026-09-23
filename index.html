@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b14" />
+  <meta name="description" content="Eduverse.id — portal belajar interaktif untuk pelajar Indonesia." />
+  <title>Eduverse.id — International Education Universe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" data-nav="home" aria-label="Eduverse.id">
+      <span class="brand-mark">E</span>
+      <span>
+        <strong>Eduverse<span>.id</span></strong>
+        <small>INTERNATIONAL EDUCATION UNIVERSE</small>
+      </span>
+    </a>
+
+    <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu">☰</button>
+
+    <nav class="nav" id="mainNav">
+      <a href="#home" data-nav="home">Beranda</a>
+      <a href="#subjects" data-nav="subjects">Pelajaran</a>
+      <a href="#quiz" data-nav="quiz">Kuis</a>
+      <a href="#progress" data-nav="progress">Progress</a>
+      <button class="icon-btn" id="themeToggle" title="Ganti tema" aria-label="Ganti tema">☼</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page active" id="home">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="status-pill"><span class="status-dot"></span> SYSTEM ONLINE • LEARNING HUB READY</div>
+          <h1>Belajar lebih jauh.<br /><span>Jelajahi semesta ilmu.</span></h1>
+          <p>Eduverse.id adalah portal pembelajaran interaktif dengan materi, kuis, skor, dan progress belajar yang tersimpan langsung di perangkatmu.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-nav="subjects">Mulai Belajar <span>→</span></button>
+            <button class="btn btn-ghost" data-nav="quiz">Coba Kuis <span>✦</span></button>
+          </div>
+          <div class="hero-meta">
+            <div><strong id="subjectCountHero">8+</strong><span>Pelajaran</span></div>
+            <div><strong>40+</strong><span>Materi</span></div>
+            <div><strong>100%</strong><span>Interaktif</span></div>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="console">
+            <div class="console-head"><span>EDUVERSE CORE</span><span class="live">● LIVE</span></div>
+            <div class="console-line"><span>01</span> knowledge_engine.init()</div>
+            <div class="console-line"><span>02</span> subjects.load(<b>8</b>)</div>
+            <div class="console-line"><span>03</span> quiz_module.ready(<b>true</b>)</div>
+            <div class="console-line"><span>04</span> progress.sync(<b>local</b>)</div>
+            <div class="console-line"><span>05</span> <em>Welcome to Eduverse.id_</em></div>
+            <div class="scan"></div>
+          </div>
+          <div class="mini-card">
+            <span>LAST SESSION</span>
+            <strong id="lastSession">Belum ada aktivitas</strong>
+            <small>Progress akan muncul di sini.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-heading">
+        <div><span class="eyebrow">QUICK ACCESS</span><h2>Akses cepat</h2></div>
+        <button class="text-btn" data-nav="subjects">Lihat semua →</button>
+      </div>
+      <div class="quick-grid" id="quickGrid"></div>
+
+      <div class="feature-strip">
+        <div class="feature"><span class="feature-icon">⌁</span><div><strong>Materi Terstruktur</strong><p>Ringkas, jelas, dan dikelompokkan berdasarkan pelajaran.</p></div></div>
+        <div class="feature"><span class="feature-icon">✓</span><div><strong>Kuis Otomatis</strong><p>Nilai dihitung otomatis dan langsung masuk ke progress.</p></div></div>
+        <div class="feature"><span class="feature-icon">◒</span><div><strong>Progress Tersimpan</strong><p>Data belajar tersimpan di browser tanpa akun tambahan.</p></div></div>
+      </div>
+    </section>
+
+    <section class="page" id="subjects">
+      <div class="page-banner">
+        <div><span class="eyebrow">KNOWLEDGE DATABASE</span><h2>Pelajaran</h2><p>Pilih cabang ilmu yang ingin kamu jelajahi.</p></div>
+        <div class="banner-stat"><span id="subjectCount">8</span><small>subject modules</small></div>
+      </div>
+      <div class="search-row">
+        <label class="search-box"><span>⌕</span><input id="subjectSearch" type="search" placeholder="Cari pelajaran atau topik..." /></label>
+      </div>
+      <div class="subject-grid" id="subjectGrid"></div>
+    </section>
+
+    <section class="page" id="quiz">
+      <div class="page-banner">
+        <div><span class="eyebrow">ASSESSMENT MODULE</span><h2>Kuis</h2><p>Uji pemahamanmu dengan soal pilihan ganda.</p></div>
+        <div class="banner-stat"><span id="quizBest">0</span><small>best score</small></div>
+      </div>
+      <div id="quizStartView" class="quiz-start"></div>
+      <div id="quizPlayView" class="quiz-play hidden"></div>
+      <div id="quizResultView" class="quiz-result hidden"></div>
+    </section>
+
+    <section class="page" id="progress">
+      <div class="page-banner">
+        <div><span class="eyebrow">LEARNING ANALYTICS</span><h2>Progress</h2><p>Lihat perjalanan belajar yang tersimpan di perangkatmu.</p></div>
+        <button class="btn btn-ghost btn-small" id="resetProgress">Reset Progress</button>
+      </div>
+      <div class="progress-top">
+        <div class="progress-card big">
+          <span class="card-label">TOTAL XP</span>
+          <strong id="totalXp">0</strong>
+          <small>dikumpulkan dari aktivitas kuis</small>
+        </div>
+        <div class="progress-card">
+          <span class="card-label">QUIZ DICOBA</span>
+          <strong id="quizAttempts">0</strong>
+          <small>percobaan</small>
+        </div>
+        <div class="progress-card">
+          <span class="card-label">TOP SKOR</span>
+          <strong id="bestScore">0%</strong>
+          <small>skor terbaik</small>
+        </div>
+      </div>
+      <div class="progress-layout">
+        <div class="panel">
+          <div class="panel-title"><span>SUBJECT MASTERY</span><small>berdasarkan kuis</small></div>
+          <div id="masteryList"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title"><span>RECENT ACTIVITY</span><small>lokal</small></div>
+          <div id="activityList"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>Eduverse<span>.id</span></strong><small>International Education Universe</small></div>
+    <div class="footer-right"><span>Secure Learning • Local Progress</span><span>© 2026 Eduverse.id</span></div>
+  </footer>
+
+  <div class="modal hidden" id="materialModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Tutup">×</button>
+      <span class="eyebrow" id="modalSubject">SUBJECT</span>
+      <h3 id="modalTitle">Materi</h3>
+      <div class="material-content" id="modalContent"></div>
+      <button class="btn btn-primary" id="modalQuizBtn">Latihan soal topik ini →</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
